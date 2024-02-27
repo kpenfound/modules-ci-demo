@@ -9,19 +9,21 @@ class Ci {
    */
   @func()
   async ci(source: Directory): Promise<string> {
-    // Use Golang module
+    // Use Golang module to configure project
     var goProject = dag.golang().withProject(source)
 
-    // Run Go tests
+    // Run Go tests using Golang module
     await goProject.test()
 
-    // Get container with built binaries
+    // Get container with built binaries using Golang module
     var image = await goProject.buildContainer()
 
-    // Push image to a registry
+    // Push image to a registry using core Dagger API
     var ref = await image.publish("ttl.sh/demoapp:1h")
-    //
-    // Scan image for vulnerabilities
+
+    // Scan image for vulnerabilities using Trivy module
     return dag.trivy().scanContainer(dag.container().from(ref))
   }
 }
+
+
