@@ -1,0 +1,16 @@
+{
+  "name": "ci",
+  "sdk": "python",
+  "dependencies": [
+    {
+      "name": "golang",
+      "source": "github.com/kpenfound/dagger-modules/golang@8d662e001caf8c16253226d0d456f2f0f374f009"
+    },
+    {
+      "name": "trivy",
+      "source": "github.com/jpadams/daggerverse/trivy@f89b7240f7e711a323dae5a66df9b78dfe6a4ec2"
+    }
+  ],
+  "source": ".",
+  "engineVersion": "v0.10.0"
+}
